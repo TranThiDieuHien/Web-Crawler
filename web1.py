@@ -9,6 +9,7 @@ Created on Fri Jan 22 11:32:12 2021
 import requests
 from bs4 import BeautifulSoup
 import re
+import os
 
 #Hàm này dùng để đọc nội dung đường dẫn
 #Kết quả trả về là nội dung trong đường dẫn 
@@ -56,3 +57,15 @@ def kiem_tra_duong_dan(url):
 def chinh_sua_duong_dan(url, item): 
     item = str(url) + item    #Thêm https://... vào
     return item
+
+
+def kiem_tra_url_da_duyet(url):
+    path = "C:\\CRAWLER\\"
+    os.chdir(path)
+    file = open("History.txt", 'r+', encoding='utf-8')
+    ds_da_duyet = file.readlines()
+    for i in ds_da_duyet:
+        if url in i:
+            return True
+    file.close()
+    return False

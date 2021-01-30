@@ -35,19 +35,44 @@ def kiem_tra_folder(path):
 def tao_ten_folder():
     path = "C:\\CRAWLER\\"
     os.chdir(path)
-    folder = "Trang_web_được_cào"
+    folder = 'Trang_web_được_cào'
     count = len(os.listdir(path)) - 1
     name_folder = folder + str(count)
     os.mkdir(name_folder)
     return name_folder
-    
-    
+        
 
 #Hàm này để lưu lại các đường dẫn đã lấy vào thư mục vừa tạo
 def luu_file(data, name_folder):      
     #data là list chứa nội dung file html
     path = "C:\\CRAWLER\\"
     os.chdir(path + str(name_folder))
+    html = data[0]
+    f = open('HTML_web.html', 'w', encoding='utf-8')
+    fs = open('ND_HTML.txt', 'w', encoding='utf-8')
+    fs.write(str(html))
+    f.write(str(html))
+    f.close()
+    
+#Hàm này để lưu lại lịch sử các đường dẫn đã cào vào file History.txt
+def luu_lich_su_dulieu_da_cao(url):
+    path = "C:\\CRAWLER\\"
+    os.chdir(path)
+    file = open("History.txt", 'r+', encoding='utf-8')
+    STT = len(file.readlines()) - 6
+    file.close()
+    file = open("History.txt", 'a+', encoding='utf-8')
+    content = str(STT) + "/ " + str(url) + "\n"
+    file.write(content)
+    file.close()
+    
+    
+    
+    
+    
+    
+    
+    
     
 
     

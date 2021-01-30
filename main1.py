@@ -36,17 +36,22 @@ while count < max_pages:
     for i in item:
         if web1.kiem_tra_duong_dan(i) == False:   ## Kiểm tra đường dẫn
             i = web1.chinh_sua_duong_dan(url_first, i)       
-        url_new.append(i)       ###Thêm đường dẫn hợp lệ vào url_new
+        if (i not in history) and (i not in url_list):
+            if web1.kiem_tra_url_da_duyet(i) == True:
+                continue    
+            else:    
+                url_new.append(i)       ###Thêm đường dẫn hợp lệ vào url_new
     # Lưu lại các url hợp lệ vào url_list
     url_list = url_list + url_new
     # đếm số đường dẫn đã duyệt
     count += 1
     # Lưu lại đường dẫn vừa lấy từ web về vào lịch sử
+    folder.luu_lich_su_dulieu_da_cao(url)
     history.append(url)
     #data_array là một list gồm nội dung file html...
     data_array = [content, url_new, url, url_new_limit]
     name_folder = folder.tao_ten_folder()    #Tạo thư mục tự động và kết quả trả về là tên thư mục vừa tạo
     w = folder.luu_file(data_array, name_folder)
-
+    
     # TEST CODE:
     print("Đã duyệt đường dẫn", url)
