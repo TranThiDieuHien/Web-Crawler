@@ -23,7 +23,7 @@ count = 0
 # Thêm url vào hàng chờ
 url_list.append(url_first)
 # Tạo Folder
-folder.kiem_tra_folder(data_folder)
+folder.kiem_tra_folder(data_folder)     
 while count < max_pages:
     url = url_list.pop(0)
     # danh sách những đường dẫn vừa tìm được

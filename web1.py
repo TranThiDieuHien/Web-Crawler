@@ -21,7 +21,6 @@ def doc_noi_dung(url):
 #Hàm này để lấy đường dẫn
 #Kết quả trả về là một DS chứa các đường dẫn 
 def lay_duong_dan(content):
-    
     url_list = []
     result = []
     raw = content.find_all("a")     #Lọc các thẻ <a>
@@ -31,8 +30,8 @@ def lay_duong_dan(content):
     for item in url_list:                                           ###
         item = str(item)                                              ###
         if (item.find("http", 0, 4)):                                   ###    Lọc các đường dẫn trong url_list
-            if (item.find("java", 0, 4)):                                 ##     Giữ lại các đường dẫn
-                if (item.find("#", 0, 4)):                            ##    như https://... và /vn/..
+            if (item.find("java", 0, 4)):                                 ###     Giữ lại các đường dẫn
+                if (item.find("#", 0, 4)):                            ###    như https://... và /vn/..
                     if (item.find("None", 0, 4)):                   ###      Rồi thêm vào list Result
                         if len(item) > 2:
                             result.append(item)

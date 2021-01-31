@@ -36,9 +36,9 @@ def tao_ten_folder():
     path = "C:\\CRAWLER\\"
     os.chdir(path)
     folder = 'Trang_web_được_cào'
-    count = len(os.listdir(path)) - 1
-    name_folder = folder + str(count)
-    os.mkdir(name_folder)
+    count = len(os.listdir(path)) - 1      #Bắt đầu ghi ở dòng thứ 1
+    name_folder = folder + str(count)        #Trang web đã cào số 1,2,3...
+    os.mkdir(name_folder)                  #Tạo folder
     return name_folder
         
 
@@ -46,10 +46,10 @@ def tao_ten_folder():
 def luu_file(data, name_folder):      
     #data là list chứa nội dung file html
     path = "C:\\CRAWLER\\"
-    os.chdir(path + str(name_folder))
+    os.chdir(path + str(name_folder))   #Di chuyển tới folder
     html = data[0]
-    f = open('HTML_web.html', 'w', encoding='utf-8')
-    fs = open('ND_HTML.txt', 'w', encoding='utf-8')
+    f = open('HTML_web.html', 'w', encoding='utf-8')    #Đường link tới trang web
+    fs = open('ND_HTML.txt', 'w', encoding='utf-8')     #file ghi nội dung của html
     fs.write(str(html))
     f.write(str(html))
     f.close()
@@ -59,7 +59,7 @@ def luu_lich_su_dulieu_da_cao(url):
     path = "C:\\CRAWLER\\"
     os.chdir(path)
     file = open("History.txt", 'r+', encoding='utf-8')
-    STT = len(file.readlines()) - 6
+    STT = len(file.readlines()) - 6    #bắt đầu ghi ở dòng thứ 6
     file.close()
     file = open("History.txt", 'a+', encoding='utf-8')
     content = str(STT) + "/ " + str(url) + "\n"
